@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Card</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<style>
+    th , td {
+        padding: 10px 20px;
+        border: 2px solid white;
+    
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="item">
+            <h1>Result Card</h1>
+
+            <div class="label1">
+                <label for="phyTotalMarks">
+                    Total Number Of Physics: <input type="number" id="phyTotalMarks">
+                </label>
+               <br>
+               
+                <label for="phyObtainedMarks">
+                    Obtained Number Of Physics: <input type="number" id="phyObtainedMarks">
+                </label>
+            </div>
+            <div class="label2">
+                <label for="chemTotalMarks">
+                    Total Number Of Chemistry: <input type="number" id="chemTotalMarks">
+                </label>
+               <br>
+
+                <label for="chemObtainedMarks">
+                    Obtained Number Of Chemistry: <input type="number" id="chemObtainedMarks">
+                </label>
+               
+            </div>
+            
+                   <div class="label3">
+                    <label for="mathTotalMarks">
+                        Total Number Of Math: <input type="number" id="mathTotalMarks">
+                    </label>
+                <br>
+
+                    <label for="mathObtainedMarks">
+                        Obtained Number Of Math: <input type="number" id="mathObtainedMarks">
+                    </label>
+                   
+                   </div>
+                
+        </div>
+       
+     
+    </div>
+ 
+ <br>
+ 
+
+ <button onclick = "check()" id="button">Check</button>
+ 
+<br>
+
+ <div class="card">
+     <Table>
+         <tr>
+             <th>Subject</th>
+             <th>Total Number</th>
+             <th>Obtained</th>
+             <th>percentage</th>
+             <th>Grade</th>
+             
+         </tr>
+         <tr>
+             <th>Physics:</th>
+             <td id="phyTotal"></td>
+             <td id="phyObtained"></td>
+             <td id="phypercentage"></td>
+             <td id="phygrade"></td>
+           
+         </tr>
+         <tr>
+             <th>Chemistry:</th>
+             <td id="chemTotal"></td>
+             <td id="chemObtained"></td>
+             <td id="chempercentage"></td>
+             <td id="chemgrade"></td>
+         </tr>
+         <tr>
+             <th>Math:</th>
+             <td id="mthTotal"></td>
+             <td id="mthObtained"></td>
+             <td id="mathpercentage"></td>
+             <td id="mathgrade"></td>
+         </tr>
+        
+         <tr>
+ 
+             <td>Total Marks:</td>
+             <td id="allTotal"></td>
+             <td id="allObtain"></td>
+             <td id="allpercentage"></td>
+             <td id="allGrade"></td>
+         </tr>
+        
+     </Table>
+    
+    
+ </div>
+ <br>
+
+ 
+  <script>
+    function check()
+  {
+      let totalNumPhy = Number(document.getElementById("phyTotalMarks").value);
+      let obtNumPhy = Number(document.getElementById("phyObtainedMarks").value);
+      let percentage_of_physics = (obtNumPhy / totalNumPhy)* 100
+      let totalNumChem = Number(document.getElementById("chemTotalMarks").value);
+      let obtNumChem = Number(document.getElementById("chemObtainedMarks").value);
+      let percentage_of_Chemistry = (obtNumChem / totalNumChem)* 100
+      let totalNumMath = Number(document.getElementById("mathTotalMarks").value);
+      let obtNumMath = Number(document.getElementById("mathObtainedMarks").value);
+      let percentage_of_Math = (obtNumMath/ totalNumMath)* 100
+      
+      let totalMarks = totalNumPhy + totalNumChem + totalNumMath ;
+      let obtTotalMarks = obtNumPhy + obtNumChem + obtNumMath ;
+      let percentageAll = (obtTotalMarks / totalMarks) * 100
+      
+
+            document.getElementById("phyTotal").innerText =totalNumPhy;            
+            document.getElementById("phyObtained").innerText = obtNumPhy;       
+            document.getElementById("phypercentage").innerText = percentage_of_physics + "%";
+
+            document.getElementById("chemTotal").innerText =totalNumChem;            
+            document.getElementById("chemObtained").innerText = obtNumChem;       
+            document.getElementById("chempercentage").innerText = percentage_of_Chemistry + "%";
+
+            document.getElementById("mthTotal").innerText =totalNumMath;            
+            document.getElementById("mthObtained").innerText = obtNumMath;       
+            document.getElementById("mathpercentage").innerText = percentage_of_Math + "%";
+
+            document.getElementById("allTotal").innerText =totalMarks;            
+            document.getElementById("allObtain").innerText = obtTotalMarks;       
+            document.getElementById("allpercentage").innerText = percentageAll + "%";
+
+
+
+            if(percentage_of_Chemistry >= 80) {
+                document.getElementById("phygrade").innerText = "A+"
+            } else if(percentage_of_physics >= 70){
+                document.getElementById("phygrade").innerText = "A"
+            } else if(percentage_of_physics >= 60){
+                document.getElementById("phygrade").innerText = "B"
+            } else if(percentage_of_physics >= 50){
+                document.getElementById("phygrade").innerText = "C"
+            } else {
+                document.getElementById("phygrade").innerText = "A"
+            }
+
+            if(percentage_of_Chemistry >= 80) {
+                document.getElementById("chemgrade").innerText = "A+"
+            } else if(percentage_of_Chemistry >= 70){
+                document.getElementById("chemgrade").innerText = "A"
+            } else if(percentage_of_Chemistry >= 60){
+                document.getElementById("chemgrade").innerText = "B"
+            } else if(percentage_of_Chemistry >= 50){
+                document.getElementById("chemgrade").innerText = "C"
+            } else {
+                document.getElementById("chemgrade").innerText = "A"
+            }
+
+            if(percentage_of_Math >= 80) {
+                document.getElementById("mathgrade").innerText = "A+"
+            } else if(percentage_of_Math >= 70){
+                document.getElementById("mathgrade").innerText = "A"
+            } else if(percentage_of_Math >= 60){
+                document.getElementById("mathgrade").innerText = "B"
+            } else if(percentage_of_Math >= 50){
+                document.getElementById("mathgrade").innerText = "C"
+            } else {
+                document.getElementById("mathgrade").innerText = "A"
+            }
+              
+            if(percentageAll >= 80) {
+                document.getElementById("allGrade").innerText = "A+"
+            } else if(percentageAll >= 70){
+                document.getElementById("allGrade").innerText = "A"
+            } else if(percentageAll >= 60){
+                document.getElementById("allGrade").innerText = "B"
+            } else if(percentageAll >= 50){
+                document.getElementById("allGrade").innerText = "C"
+            } else {
+                document.getElementById("allGrade").innerText = "A"
+            }
+
+            
+  }
+  
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
